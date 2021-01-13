@@ -1,12 +1,12 @@
 {
   "name": "@x100group/jetti-finance-common",
   "tsc": "tsc",
-  "version": "1.0.0",
-
-  "description": "jetti-finance-common",
+  "version": "1.0.2",
+  "description": "Jetti Finance server and client common files",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "publish": "publish"
   },
   "author": "x100-jetti",
   "license": "MIT",
@@ -26,5 +26,8 @@
   "engineStrict": true,
   "engines": {
     "node": "12.18.4"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

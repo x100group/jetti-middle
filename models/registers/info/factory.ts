@@ -1,0 +1,32 @@
+export type RegisterInfoTypes =
+    'Register.Info.Dynamic' |
+    'Register.Info.Holiday' |
+    'Register.Info.PriceList' |
+    'Register.Info.BusinessCalendar' |
+    'Register.Info.BusinessCalendar.Months' |
+    'Register.Info.SelfEmployed' |
+    'Register.Info.SettlementsReconciliation' |
+    'Register.Info.ExchangeRates' |
+    'Register.Info.ExchangeRates.National' |
+    'Register.Info.Settings' |
+    'Register.Info.ProductSpecificationByDepartment' |
+    'Register.Info.Depreciation' |
+    'Register.Info.RLS' |
+    'Register.Info.Intl' |
+    'Register.Info.RLS.Period' |
+    'Register.Info.BudgetItemRule' |
+    'Register.Info.DepartmentCompanyHistory' |
+    'Register.Info.DepartmentStatus' |
+    'Register.Info.CompanyResponsiblePersons' |
+    'Register.Info.IntercompanyHistory' |
+    'Register.Info.RoyaltySales' |
+    'Register.Info.IncomeDocumentRegistry' |
+    'Register.Info.CompanyPrice' |
+    'Register.Info.ShareEmission' |
+    'Register.Info.LoanOwner' |
+    'Register.Info.ProductModifier' |
+    'Register.Info.EmployeeHistory' |
+    'Register.Info.EmploymentType' |
+    'Register.Info.StaffingTableHistory' |
+    'Register.Info.TaxCheck' |
+    'Register.Info.CounterpartiePriceList';

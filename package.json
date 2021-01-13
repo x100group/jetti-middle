@@ -1,0 +1,21 @@
+{
+  "name": "jetti-finance-common",
+  "tsc": "tsc",
+  "description": "jetti-finance-common",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "author": "x100-jetti",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "reflect-metadata": "^0.1.13",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.0",
+    "tslint": "^6.1.1",
+    "typescript": "^3.5.3"
+  }
+}

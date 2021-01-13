@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { v1 } from 'uuid';
 import { Type } from '../helpers/type';
-import { PropOptions, DocumentOptions, IFlatDocument } from '../interfaces/document';
+import { DocumentOptions, IFlatDocument, PropOptions } from '../interfaces/document';
 import { Ref } from '../types/document-types';
 
 export const symbolProps = Symbol('Props');

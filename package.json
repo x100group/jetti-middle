@@ -1,9 +1,9 @@
 {
-  "name": "@x100group/jetti-finance-common",
+  "name": "jetti-finance-common",
   "tsc": "tsc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Jetti Finance server and client common files",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "tsc": "tsc",
     "publish": "npm publish"

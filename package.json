@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "publish": "publish"
+    "publish": "npm publish"
   },
   "author": "x100-jetti",
   "license": "MIT",

@@ -10,7 +10,6 @@
   },
   "author": "x100-jetti",
   "license": "MIT",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/x100group/jetti-crm"

@@ -6,7 +6,7 @@
 # Install	
 
 ```sh	
-  npm i @x100group/jetti-front-xprinter-xp-c58e@1.0.0 --registry "https://npm.pkg.github.com"	
+  npm i @x100group/jetti-finance-common@1.0.0 --registry "https://npm.pkg.github.com"	
 ```	
 
 # Auth	

@@ -13,7 +13,7 @@ export interface IJob {
     message: string;
 }
 
-interface JobInformation {
+export interface JobInformation {
     key: string;
     name: string;
     id?: string;

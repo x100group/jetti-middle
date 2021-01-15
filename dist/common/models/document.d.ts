@@ -28,10 +28,10 @@ export declare class DocumentBase {
     workflow: Ref;
     private targetProp;
     Prop(propertyKey?: string): PropOptions | DocumentOptions;
-    get isDoc(): boolean;
-    get isCatalog(): boolean;
-    get isType(): boolean;
-    get isJornal(): boolean;
+    isDoc: () => boolean;
+    isCatalog: () =>boolean;
+    isType: () => boolean;
+    isJornal: () => boolean;
     Props(): {
         [x: string]: PropOptions;
     };

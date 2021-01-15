@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/uuid": "^8.3.0",
     "tslint": "^6.1.1",
-    "typescript": "^3.5.3"
+    "typescript": "~3.5.3"
   },
   "engineStrict": true,
   "engines": {

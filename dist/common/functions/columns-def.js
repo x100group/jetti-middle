@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildColumnDef = exports.ENUM_STYLE = exports.DEFAULT_STYLE = exports.DATETIME_STYLE = exports.BOOLEAN_STYLE = exports.NUMBER_STYLE = void 0;
 const form_list_1 = require("../classes/form-list");
 exports.NUMBER_STYLE = { 'width': '100px', 'text-align': 'right' };
 exports.BOOLEAN_STYLE = { 'width': '90px', 'text-align': 'center' };

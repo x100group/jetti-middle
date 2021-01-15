@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Type = void 0;
 class Type {
     static isOperation(type) {
         return !!(type && type.startsWith('Operation.'));

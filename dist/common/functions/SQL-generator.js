@@ -14,7 +14,6 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.excludeRegisterInfoProps = exports.excludeRegisterAccumulatioProps = exports.excludeProps = exports.buildSubcountQueryList = exports.buildTypesQueryList = exports.SQLGenegator = void 0;
 class SQLGenegator {
     static QueryObject(doc, type) {
         const simleProperty = (prop, type) => {

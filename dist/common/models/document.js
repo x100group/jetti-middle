@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DocumentBase = exports.JDocument = exports.Props = exports.symbolProps = void 0;
 require("reflect-metadata");
 const uuid_1 = require("uuid");
 const type_1 = require("../helpers/type");

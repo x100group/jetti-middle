@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterInfo = exports.JRegisterInfo = void 0;
 const SQL_generator_1 = require("../functions/SQL-generator");
 const document_1 = require("./document");
 function JRegisterInfo(props) {

@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserSettings = exports.UserDefaultsSettings = void 0;
 const form_list_1 = require("./form-list");
 class UserDefaultsSettings {
 }

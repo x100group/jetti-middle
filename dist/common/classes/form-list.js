@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FormListSettings = exports.FormListOrder = exports.FormListFilter = void 0;
 class FormListFilter {
     constructor(left, center = '=', right = null, isFixed) {
         this.left = left;

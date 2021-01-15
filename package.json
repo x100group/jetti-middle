@@ -1,14 +1,15 @@
 {
   "name": "@TishchenkoAlex/jetti-middle",
   "tsc": "tsc",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Jetti Finance server and client common files",
-  "main": "index",
+  "main": "./dist/index",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "tsc": "tsc",
     "publish": "npm publish"
   },
-  "author": "TishchenkoAlex",
+  "author": "Tishchenko Alex",
   "license": "MIT",
   "repository": {
     "type": "git",

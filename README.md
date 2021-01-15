@@ -6,7 +6,7 @@
 # Install	
 
 ```sh	
-  npm i @x100group/jetti-finance-common@1.0.0 --registry "https://npm.pkg.github.com"	
+  npm i @tishchenkoAlex/jetti-middle@1.0.0 --registry "https://npm.pkg.github.com"	
 ```	
 
 # Auth	
@@ -35,7 +35,7 @@ exmaple
 
 and go cli console and write 	
 ```sh	
-npm login --scope=https://github.com/x100group --registry=https://npm.pkg.github.com	
+npm login --scope=https://github.com/TishchenkoAlex --registry=https://npm.pkg.github.com	
 Username: {YOUR USER NAME LOVERCASE}	
 Password: {YOUR ACCESS GIT TOKEN}	
 Public email: {YOUR EMAIL}	

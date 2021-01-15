@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getInnerSimpleTypeByObject = exports.FormBase = exports.DynamicProps = exports.JForm = void 0;
 const uuid_1 = require("uuid");
 const document_1 = require("./document");
 function JForm(props) {

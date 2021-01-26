@@ -7,7 +7,7 @@ export declare function Props(props: PropOptions): {
     (target: Object, propertyKey: string | symbol): void;
 };
 export declare function JDocument(props: DocumentOptions): <T extends new (...args: any[]) => {}>(constructor: T) => {
-    new(...args: any[]): {
+    new (...args: any[]): {
         type: string;
     };
 } & T;
@@ -28,10 +28,10 @@ export declare class DocumentBase {
     workflow: Ref;
     private targetProp;
     Prop(propertyKey?: string): PropOptions | DocumentOptions;
-    isDoc: boolean;
-    isCatalog: boolean;
-    isType: boolean;
-    isJornal: boolean;
+    get isDoc(): boolean;
+    get isCatalog(): boolean;
+    get isType(): boolean;
+    get isJornal(): boolean;
     Props(): {
         [x: string]: PropOptions;
     };
@@ -40,4 +40,3 @@ export declare class DocumentBase {
         [x: string]: PropOptions;
     };
 }
-

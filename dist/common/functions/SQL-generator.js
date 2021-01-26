@@ -342,21 +342,27 @@ class SQLGenegator {
         const simleProperty = (prop, type) => {
             if (type === 'boolean')
                 return `
-      , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(doc, N'$."${prop}"')), 0) [${prop}]`;
+      , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(doc, N'$.${prop}')), 0) [${prop}]`;
             if (type === 'number')
                 return `
-      , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(doc, N'$."${prop}"')), 0) [${prop}]`;
+      , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(doc, N'$.${prop}')), 0) [${prop}]`;
             if (type === 'date')
                 return `
       , TRY_CONVERT(DATE, JSON_VALUE(doc, N'$.${prop}'),127) [${prop}]`;
             if (type === 'datetime')
                 return `
       , TRY_CONVERT(DATETIME, JSON_VALUE(doc, N'$.${prop}'),127) [${prop}]`;
+            if (type === 'enum')
+                return `
+      , ISNULL(TRY_CONVERT(NVARCHAR(36), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}`;
+            if (type === 'string')
+                return `
+      , ISNULL(TRY_CONVERT(NVARCHAR(150), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}`;
             if (type.includes('.'))
                 return `
-      , TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(doc, N'$."${prop}"')) [${prop}]`;
+      , TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(doc, N'$.${prop}')) [${prop}]`;
             return `
-      , ISNULL(TRY_CONVERT(NVARCHAR(250), JSON_VALUE(doc, N'$."${prop}"')), '') [${prop}]`;
+      , ISNULL(TRY_CONVERT(NVARCHAR(250), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
         };
         let query = ``;
         for (const prop in excludeProps(doc)) {

@@ -354,10 +354,10 @@ class SQLGenegator {
       , TRY_CONVERT(DATETIME, JSON_VALUE(doc, N'$.${prop}'),127) [${prop}]`;
             if (type === 'enum')
                 return `
-      , ISNULL(TRY_CONVERT(NVARCHAR(36), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}`;
+      , ISNULL(TRY_CONVERT(NVARCHAR(36), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
             if (type === 'string')
                 return `
-      , ISNULL(TRY_CONVERT(NVARCHAR(150), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}`;
+      , ISNULL(TRY_CONVERT(NVARCHAR(150), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
             if (type.includes('.'))
                 return `
       , TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(doc, N'$.${prop}')) [${prop}]`;

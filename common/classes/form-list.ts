@@ -18,8 +18,10 @@ export class FormListSettings {
     order: FormListOrder[] = [];
 
     static isValid = (settings: FormListSettings, limitDays: number, sortableColumns: string[]): boolean => {
+        if (!settings.order) return true;
+        if (!settings.filter) return false;
         const nonSortable = settings.order.find(e => !sortableColumns.includes(e.field.toLowerCase()));
-        if (!nonSortable) return true;
+        if (!nonSortable) return false;
         const dateFilter = settings.filter.find(f => f.left.toLowerCase() === 'date');
         if (!dateFilter) return false;
         const [from, to] = dateFilter.right;

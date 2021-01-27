@@ -24,9 +24,13 @@ class FormListSettings {
 }
 exports.FormListSettings = FormListSettings;
 FormListSettings.isValid = (settings, limitDays, sortableColumns) => {
+    if (!settings.order)
+        return true;
+    if (!settings.filter)
+        return false;
     const nonSortable = settings.order.find(e => !sortableColumns.includes(e.field.toLowerCase()));
     if (!nonSortable)
-        return true;
+        return false;
     const dateFilter = settings.filter.find(f => f.left.toLowerCase() === 'date');
     if (!dateFilter)
         return false;

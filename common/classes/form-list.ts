@@ -17,10 +17,10 @@ export class FormListSettings {
     filter: FormListFilter[] = [];
     order: FormListOrder[] = [];
 
-    isValid = (limitDays: number, sortableColumns: string[]): boolean => {
-        const nonSortable = this.order.find(e => !sortableColumns.includes(e.field.toLowerCase()));
+    static isValid = (settings: FormListSettings, limitDays: number, sortableColumns: string[]): boolean => {
+        const nonSortable = settings.order.find(e => !sortableColumns.includes(e.field.toLowerCase()));
         if (!nonSortable) return true;
-        const dateFilter = this.filter.find(f => f.left.toLowerCase() === 'date');
+        const dateFilter = settings.filter.find(f => f.left.toLowerCase() === 'date');
         if (!dateFilter) return false;
         const [from, to] = dateFilter.right;
         const dayDiff = (date1: Date, date2: Date) => {

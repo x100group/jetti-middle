@@ -14,5 +14,5 @@ export declare class FormListOrder {
 export declare class FormListSettings {
     filter: FormListFilter[];
     order: FormListOrder[];
-    isValid: (limitDays: number, sortableColumns: string[]) => boolean;
+    static isValid: (settings: FormListSettings, limitDays: number, sortableColumns: string[]) => boolean;
 }

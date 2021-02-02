@@ -9,3 +9,15 @@ export declare class UserSettings {
     };
     defaults: UserDefaultsSettings;
 }
+export interface IUserSettings {
+    id?: string;
+    type: string;
+    kind?: 'filter' | 'columns';
+    user?: string;
+    description?: string;
+    selected?: boolean;
+    settings?: FormListSettings;
+    isModify?: boolean;
+    readonly?: boolean;
+    isNew?: boolean;
+}

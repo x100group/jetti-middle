@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FormListSettings = exports.FormListOrder = exports.FormListFilter = void 0;
 class FormListFilter {
-    constructor(left, center = '=', right = null, isFixed) {
+    constructor(left, center = '=', right = null, isActive, isFixed) {
         this.left = left;
         this.center = center;
         this.right = right;
+        this.isActive = isActive;
         this.isFixed = isFixed;
     }
 }
@@ -21,6 +22,7 @@ class FormListSettings {
     constructor() {
         this.filter = [];
         this.order = [];
+        this.columns = { color: {}, width: {}, order: [], visibility: {} };
     }
 }
 exports.FormListSettings = FormListSettings;

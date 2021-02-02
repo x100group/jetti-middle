@@ -4,6 +4,7 @@ export class FormListFilter {
         public left: string,
         public center: matchOperator = '=',
         public right: any = null,
+        public isActive?: boolean,
         public isFixed?: boolean) { }
 }
 
@@ -13,9 +14,16 @@ export class FormListOrder {
     constructor(public field: string) { }
 }
 
+export interface FormListColumnProps {
+    color: { [field: string]: string };
+    width: { [field: string]: string };
+    order: string[];
+    visibility: { [field: string]: boolean };
+}
 export class FormListSettings {
     filter: FormListFilter[] = [];
     order: FormListOrder[] = [];
+    columns?: FormListColumnProps = { color: {}, width: {}, order: [], visibility: {} };
 
     static isValid = (settings: FormListSettings, limitDays: number, sortableColumns: string[]): boolean => {
         if (!settings.order) return true;

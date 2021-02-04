@@ -19,4 +19,5 @@ export interface ColumnDef {
     filter?: FormListFilter;
     value: any;
     control?: any; // FormControlInfo;
+    anyTemp?: any;
 }

@@ -6,7 +6,7 @@ import { UserDefaultsSettings, UserSettings } from './common/classes/user-settin
 import { calculateDescription } from './common/functions/calculate-description';
 import { BOOLEAN_STYLE, buildColumnDef, DATETIME_STYLE, DEFAULT_STYLE, ENUM_STYLE, NUMBER_STYLE } from './common/functions/columns-def';
 import { dateReviver, dateReviverLocal, dateReviverUTC } from './common/functions/date-reviver';
-import { buildSubcountQueryList, buildTypesQueryList, excludeProps, excludeRegisterAccumulatioProps, excludeRegisterInfoProps, SQLGenegator } from './common/functions/SQL-generator';
+import { buildSubcountQueryList, buildTypesQueryList, extractProps, excludeRegisterAccumulatioProps, excludeRegisterInfoProps, SQLGenegator } from './common/functions/SQL-generator';
 // HELPERS
 import { Type } from './common/helpers/type';
 // INTERFACES
@@ -38,7 +38,7 @@ export {
     calculateDescription,
     BOOLEAN_STYLE, buildColumnDef, DATETIME_STYLE, DEFAULT_STYLE, ENUM_STYLE, NUMBER_STYLE,
     dateReviver, dateReviverLocal, dateReviverUTC,
-    buildSubcountQueryList, buildTypesQueryList, excludeProps, excludeRegisterAccumulatioProps, excludeRegisterInfoProps, SQLGenegator,
+    buildSubcountQueryList, buildTypesQueryList, extractProps as excludeProps, excludeRegisterAccumulatioProps, excludeRegisterInfoProps, SQLGenegator,
     // HELPERS
     Type,
     // INTERFACES

@@ -324,7 +324,7 @@ class SQLGenegator {
         let LeftJoin = '';
         const excludedProps = type_1.Type.isOperation(type) ? ['f1', 'f2', 'f3'] : [];
         const props = Object.keys(excludeProps(doc)).filter(prop => !excludedProps.includes(prop));
-        for (const prop in props) {
+        for (const prop of props) {
             const type = doc[prop].type || 'string';
             if (type.includes('.')) {
                 query += complexProperty(prop, type);
@@ -371,7 +371,7 @@ class SQLGenegator {
         let query = ``;
         const excludedProps = type_1.Type.isOperation(type) ? ['f1', 'f2', 'f3'] : [];
         const props = Object.keys(excludeProps(doc)).filter(prop => !excludedProps.includes(prop));
-        for (const prop in props) {
+        for (const prop of props) {
             const type = doc[prop].type || 'string';
             if (type !== 'table') {
                 query += simleProperty(prop, type);

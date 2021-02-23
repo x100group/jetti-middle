@@ -4,6 +4,7 @@
 // tslint:disable:no-shadowed-variable
 // tslint:disable:forin
 
+import { Type } from '../helpers/type';
 import { PropOptions } from '../interfaces/document';
 import { PrimitiveTypes } from '../types/primitive-types';
 
@@ -107,7 +108,7 @@ export class SQLGenegator {
 
     let LeftJoin = '';
 
-    for (const prop in excludeProps(doc)) {
+    for (const prop in extractProps(doc)) {
       const type: string = doc[prop].type as string || 'string';
       if (type.includes('.')) {
         query += complexProperty(prop, type);
@@ -227,7 +228,7 @@ export class SQLGenegator {
 
     let LeftJoin = '';
 
-    for (const prop in excludeProps(schema)) {
+    for (const prop in extractProps(schema)) {
       const type: string = schema[prop].type || 'string';
       if (type.includes('.')) {
         query += complexProperty(prop, type);
@@ -296,7 +297,7 @@ export class SQLGenegator {
 
     let LeftJoin = '';
 
-    for (const prop in excludeProps(doc)) {
+    for (const prop in extractProps(doc)) {
       const type = doc[prop].type || 'string';
       if (type.includes('.')) {
         query += complexProperty(prop, type);
@@ -339,8 +340,9 @@ export class SQLGenegator {
         , ISNULL("user".description, '') "user.value", d."user" "user.id", "user".type "user.type"`;
 
     let LeftJoin = '';
-
-    for (const prop in excludeProps(doc)) {
+    const excludedProps = Type.isOperation(type) ? ['f1','f2','f3'] : [];
+    const props = Object.keys(extractProps(doc)).filter(prop => !excludedProps.includes(prop));
+    for (const prop in props) {
       const type = doc[prop].type || 'string';
       if (type.includes('.')) {
         query += complexProperty(prop, type);
@@ -382,7 +384,9 @@ export class SQLGenegator {
     };
 
     let query = ``;
-    for (const prop in excludeProps(doc)) {
+    const excludedProps = Type.isOperation(type) ? ['f1','f2','f3'] : [];
+    const props = Object.keys(extractProps(doc)).filter(prop => !excludedProps.includes(prop));
+    for (const prop in props) {
       const type = doc[prop].type || 'string';
       if (type !== 'table') {
         query += simleProperty(prop, type);
@@ -561,7 +565,7 @@ export function buildSubcountQueryList(select: { type: string; description: stri
   return query;
 }
 
-export function excludeProps(doc) {
+export function extractProps(doc) {
   const { user, company, parent, info, isfolder, description, id, type, date, code, posted, deleted, timestamp, version, ...newObject } = doc;
   return newObject;
 }

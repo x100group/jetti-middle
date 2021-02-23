@@ -3,7 +3,7 @@ export interface IJWTPayload {
     description: string;
     isAdmin: boolean;
     roles: any[];
-    env: { [x: string]: string };
+    env: { [x: string]: any };
 }
 
 export interface IAccount extends IJWTPayload {

@@ -18,7 +18,5 @@ export interface IUserSettings {
     description?: string;
     selected?: boolean;
     settings?: FormListSettings;
-    isModify?: boolean;
-    readonly?: boolean;
-    isNew?: boolean;
+    timestamp?: Date;
 }

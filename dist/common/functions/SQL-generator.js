@@ -15,6 +15,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.excludeRegisterInfoProps = exports.excludeRegisterAccumulatioProps = exports.excludeProps = exports.buildSubcountQueryList = exports.buildTypesQueryList = exports.SQLGenegator = void 0;
+const type_1 = require("../helpers/type");
 class SQLGenegator {
     static QueryObject(doc, type) {
         const simleProperty = (prop, type) => {
@@ -321,7 +322,9 @@ class SQLGenegator {
         , ISNULL("company".description, '') "company.value", d."company" "company.id", "company".type "company.type"
         , ISNULL("user".description, '') "user.value", d."user" "user.id", "user".type "user.type"`;
         let LeftJoin = '';
-        for (const prop in excludeProps(doc)) {
+        const excludedProps = type_1.Type.isOperation(type) ? ['f1', 'f2', 'f3'] : [];
+        const props = Object.keys(excludeProps(doc)).filter(prop => !excludedProps.includes(prop));
+        for (const prop in props) {
             const type = doc[prop].type || 'string';
             if (type.includes('.')) {
                 query += complexProperty(prop, type);
@@ -366,7 +369,9 @@ class SQLGenegator {
       , ISNULL(TRY_CONVERT(NVARCHAR(250), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
         };
         let query = ``;
-        for (const prop in excludeProps(doc)) {
+        const excludedProps = type_1.Type.isOperation(type) ? ['f1', 'f2', 'f3'] : [];
+        const props = Object.keys(excludeProps(doc)).filter(prop => !excludedProps.includes(prop));
+        for (const prop in props) {
             const type = doc[prop].type || 'string';
             if (type !== 'table') {
                 query += simleProperty(prop, type);

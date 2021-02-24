@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JRegisterInfo = exports.RegisterInfo = exports.RegisterAccumulation = exports.JRegisterAccumulation = exports.FormBase = exports.DynamicProps = exports.getInnerSimpleTypeByObject = exports.JForm = exports.JDocument = exports.Props = exports.symbolProps = exports.DocumentBase = exports.Type = exports.SQLGenegator = exports.excludeRegisterInfoProps = exports.excludeRegisterAccumulatioProps = exports.excludeProps = exports.buildTypesQueryList = exports.buildSubcountQueryList = exports.dateReviverUTC = exports.dateReviverLocal = exports.dateReviver = exports.NUMBER_STYLE = exports.ENUM_STYLE = exports.DEFAULT_STYLE = exports.DATETIME_STYLE = exports.buildColumnDef = exports.BOOLEAN_STYLE = exports.calculateDescription = exports.UserSettings = exports.UserDefaultsSettings = exports.FormListSettings = exports.FormListOrder = exports.FormListFilter = exports.FilterInterval = void 0;
+exports.matchOperatorByType = exports.JRegisterInfo = exports.RegisterInfo = exports.RegisterAccumulation = exports.JRegisterAccumulation = exports.FormBase = exports.DynamicProps = exports.getInnerSimpleTypeByObject = exports.JForm = exports.JDocument = exports.Props = exports.symbolProps = exports.DocumentBase = exports.Type = exports.SQLGenegator = exports.excludeRegisterInfoProps = exports.excludeRegisterAccumulatioProps = exports.excludeProps = exports.buildTypesQueryList = exports.buildSubcountQueryList = exports.dateReviverUTC = exports.dateReviverLocal = exports.dateReviver = exports.NUMBER_STYLE = exports.ENUM_STYLE = exports.DEFAULT_STYLE = exports.DATETIME_STYLE = exports.buildColumnDef = exports.BOOLEAN_STYLE = exports.calculateDescription = exports.UserSettings = exports.UserDefaultsSettings = exports.FormListSettings = exports.FormListOrder = exports.FormListFilter = exports.FilterInterval = void 0;
 // CLASSES
 const filter_1 = require("./common/classes/filter");
 Object.defineProperty(exports, "FilterInterval", { enumerable: true, get: function () { return filter_1.FilterInterval; } });
@@ -52,4 +52,7 @@ Object.defineProperty(exports, "RegisterAccumulation", { enumerable: true, get: 
 const register_info_1 = require("./common/models/register-info");
 Object.defineProperty(exports, "RegisterInfo", { enumerable: true, get: function () { return register_info_1.RegisterInfo; } });
 Object.defineProperty(exports, "JRegisterInfo", { enumerable: true, get: function () { return register_info_1.JRegisterInfo; } });
+// TYPES
+const common_1 = require("./common/types/common");
+Object.defineProperty(exports, "matchOperatorByType", { enumerable: true, get: function () { return common_1.matchOperatorByType; } });
 //# sourceMappingURL=index.js.map

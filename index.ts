@@ -1,7 +1,7 @@
 // CLASSES
 import { FilterInterval, FilterList } from './common/classes/filter';
-import { FormListFilter, FormListOrder, FormListSettings } from './common/classes/form-list';
-import { UserDefaultsSettings, UserSettings } from './common/classes/user-settings';
+import { FormListFilter, FormListOrder, FormListSettings, FormListColumnProps } from './common/classes/form-list';
+import { UserDefaultsSettings, UserSettings, IUserSettings, IUserSettingsState } from './common/classes/user-settings';
 // FUNCTIONS
 import { calculateDescription } from './common/functions/calculate-description';
 import { BOOLEAN_STYLE, buildColumnDef, DATETIME_STYLE, DEFAULT_STYLE, ENUM_STYLE, NUMBER_STYLE } from './common/functions/columns-def';
@@ -25,15 +25,15 @@ import { AccountRegister, RegisterAccount, SubCount, Account } from './common/mo
 import { JRegisterAccumulation, RegisterAccumulation, RegisterAccumulationOptions } from './common/models/register-accumulation';
 import { RegisterInfo, RegisterInfoOptions, JRegisterInfo } from './common/models/register-info';
 // TYPES
-import { matchOperator } from './common/types/common';
+import { matchOperator, matchOperatorByType } from './common/types/common';
 import { StorageType, Ref } from './common/types/document-types';
 import { PrimitiveTypes } from './common/types/primitive-types';
 
 export {
     // CLASSES
     FilterInterval, FilterList,
-    FormListFilter, FormListOrder, FormListSettings,
-    UserDefaultsSettings, UserSettings,
+    FormListFilter, FormListOrder, FormListSettings, FormListColumnProps,
+    UserDefaultsSettings, UserSettings, IUserSettings, IUserSettingsState,
     // FUNCTIONS
     calculateDescription,
     BOOLEAN_STYLE, buildColumnDef, DATETIME_STYLE, DEFAULT_STYLE, ENUM_STYLE, NUMBER_STYLE,
@@ -57,7 +57,7 @@ export {
     JRegisterAccumulation, RegisterAccumulation, RegisterAccumulationOptions,
     RegisterInfo, RegisterInfoOptions, JRegisterInfo,
     // TYPES
-    matchOperator,
+    matchOperator, matchOperatorByType,
     StorageType, Ref,
     PrimitiveTypes,
 }

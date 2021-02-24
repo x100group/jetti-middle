@@ -5,7 +5,8 @@ export class FormListFilter {
         public center: matchOperator = '=',
         public right: any = null,
         public isActive?: boolean,
-        public isFixed?: boolean) { }
+        public isFixed?: boolean,
+        public interval?: { start: any, end: any }) { }
 }
 
 export class FormListOrder {

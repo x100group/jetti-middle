@@ -5,7 +5,8 @@ export declare class FormListFilter {
     right: any;
     isActive?: boolean | undefined;
     isFixed?: boolean | undefined;
-    constructor(left: string, center?: matchOperator, right?: any, isActive?: boolean | undefined, isFixed?: boolean | undefined);
+    interval?: { start: any, end: any } | undefined;
+    constructor(left: string, center?: matchOperator, right?: any, isActive?: boolean | undefined, isFixed?: boolean | undefined, interval?: { start: any, end: any } | undefined);
 }
 export declare class FormListOrder {
     field: string;

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.matchOperatorByType = void 0;
 exports.matchOperatorByType = {
-    string: ['like', '=', 'not like'],
+    string: ['like', 'not like', '=', 'start with', 'end with', 'match', 'don\'t match'],
     number: ['=', '<=', '<', '>', '>=', 'beetwen'],
     date: ['beetwen', '=', '<=', '<', '>', '>=', '='],
     datetime: ['beetwen', '<=', '<', '>', '>=', '='],

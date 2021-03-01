@@ -5,7 +5,7 @@ export const matchOperatorByType: { [x: string]: matchOperator[] } = {
     number: ['=', '<=', '<', '>', '>=', 'beetwen'],
     date: ['beetwen', '=', '<=', '<', '>', '>=', '='],
     datetime: ['beetwen', '<=', '<', '>', '>=', '='],
-    enum: ['in', 'not in', 'is null', 'is not null'],
+    enum: ['in', 'not in'],
     boolean: ['='],
     default: ['=', 'in', 'not in', 'is null', 'is not null']
 }

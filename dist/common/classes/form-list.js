@@ -2,12 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FormListSettings = exports.FormListOrder = exports.FormListFilter = void 0;
 class FormListFilter {
-    constructor(left, center = '=', right = null, isActive, isFixed, interval) {
+    constructor(left, center = '=', right = null, isActive, isFixed, isOR, interval) {
         this.left = left;
         this.center = center;
         this.right = right;
         this.isActive = isActive;
         this.isFixed = isFixed;
+        this.isOR = isOR;
         this.interval = interval;
     }
 }

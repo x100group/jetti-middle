@@ -1,3 +1,4 @@
+import { matchOperator } from "../types/common";
 export interface RefValue {
     id: string;
     type: string;
@@ -27,4 +28,13 @@ export interface IAttachmentsSettings {
     MaxFileSize: number;
     FileFilter: string;
     Tags: string[];
+}
+export interface IUserPermission {
+    user: string;
+    kind: string;
+    type: string;
+    operator: matchOperator;
+    value: string;
+    read: boolean;
+    write: boolean;
 }

@@ -12,7 +12,7 @@ import { Type } from './common/helpers/type';
 // INTERFACES
 import { ILoginResponse, IJWTPayload, IAccount } from './common/interfaces/auth';
 import { ColumnDef } from './common/interfaces/column';
-import { IAttachmentsSettings, RefValue, PatchValue, ITree, ISuggest } from './common/interfaces/common';
+import { IAttachmentsSettings, RefValue, PatchValue, ITree, ISuggest, IUserPermission } from './common/interfaces/common';
 import { DocListRequestBody, DocListResponse, DocListOptions, Continuation } from './common/interfaces/doc-list';
 import { DocumentOptions, PropOptions, OwnerRef, Command, Relation, IFlatDocument, INoSqlDocument, IViewModel, CopyTo } from './common/interfaces/document';
 import { IEvent } from './common/interfaces/event';
@@ -44,7 +44,7 @@ export {
     // INTERFACES
     ILoginResponse, IJWTPayload, IAccount,
     ColumnDef,
-    IAttachmentsSettings, RefValue, PatchValue, ITree, ISuggest,
+    IAttachmentsSettings, RefValue, PatchValue, ITree, ISuggest, IUserPermission,
     DocListRequestBody, DocListResponse, DocListOptions, Continuation,
     DocumentOptions, PropOptions, OwnerRef, Command, Relation, IFlatDocument, INoSqlDocument, IViewModel, CopyTo,
     IEvent,

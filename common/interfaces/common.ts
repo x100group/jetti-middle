@@ -1,3 +1,4 @@
+import { matchOperator } from "../types/common";
 
 export interface RefValue {
   id: string;
@@ -34,3 +35,12 @@ export interface IAttachmentsSettings {
   Tags: string[];
 }
 
+export interface IUserPermission {
+  user: string;
+  kind: string;
+  type: string;
+  operator: matchOperator;
+  value: string;
+  read: boolean;
+  write: boolean;
+}

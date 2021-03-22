@@ -1,3 +1,5 @@
+import { IUserPermission } from "./common";
+
 export interface IJWTPayload {
     email: string;
     description: string;
@@ -16,4 +18,5 @@ export interface ILoginResponse {
     account: IAccount | undefined;
     token: string;
     photo?: any;
+    permissions: IUserPermission;
 }

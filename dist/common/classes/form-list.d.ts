@@ -5,11 +5,12 @@ export declare class FormListFilter {
     right: any;
     isActive?: boolean | undefined;
     isFixed?: boolean | undefined;
+    isOR?: boolean | undefined;
     interval?: {
         start: any;
         end: any;
     } | undefined;
-    constructor(left: string, center?: matchOperator, right?: any, isActive?: boolean | undefined, isFixed?: boolean | undefined, interval?: {
+    constructor(left: string, center?: matchOperator, right?: any, isActive?: boolean | undefined, isFixed?: boolean | undefined, isOR?: boolean | undefined, interval?: {
         start: any;
         end: any;
     } | undefined);

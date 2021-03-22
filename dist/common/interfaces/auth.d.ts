@@ -17,5 +17,5 @@ export interface ILoginResponse {
     account: IAccount | undefined;
     token: string;
     photo?: any;
-    permissions: IUserPermission;
+    permissions?: IUserPermission[];
 }

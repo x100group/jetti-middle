@@ -21,7 +21,7 @@ export class SQLGenegator {
 
     const complexProperty = (prop: string, type: string) =>
       type.startsWith('Types.') ?
-        `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc, N'$.${prop}')
+        `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc,N'$."${prop}"')
               ELSE (SELECT "${prop}".id "id", "${prop}".description "value",
                 ISNULL("${prop}".type, '${type}') "type", "${prop}".code "code" FOR JSON PATH, WITHOUT_ARRAY_WRAPPER) END, '$') "${prop}"\n` :
         `, "${prop}".id "${prop}.id", "${prop}".description "${prop}.value", '${type}' "${prop}.type", "${prop}".code "${prop}.code"\n`;
@@ -41,7 +41,7 @@ export class SQLGenegator {
         checkComlexType(type) ?
           `, x."${prop}" "${prop}.id", x."${prop}" "${prop}.value", '${type}' "${prop}.type", x."${prop}" "${prop}.code"\n` :
           type.startsWith('Types.') ?
-            `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc, N'$.${prop}')
+            `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc,N'$."${prop}"')
               ELSE (SELECT "${prop}".id "id", "${prop}".description "value",
                 ISNULL("${prop}".type, '${type}') "type", "${prop}".code "code" FOR JSON PATH, WITHOUT_ARRAY_WRAPPER) END, '$') "${prop}"\n` :
             `, "${prop}".id "${prop}.id", "${prop}".description "${prop}.value", '${type}' "${prop}.type", "${prop}".code "${prop}.code"\n`;
@@ -141,7 +141,7 @@ export class SQLGenegator {
 
     const complexProperty = (prop: string, type: string) =>
       type.startsWith('Types.') ?
-        `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc, N'$.${prop}')
+        `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc,N'$."${prop}"')
               ELSE (SELECT "${prop}".id "id", "${prop}".description "value",
                 ISNULL("${prop}".type, '${type}') "type", "${prop}".code "code" FOR JSON PATH, WITHOUT_ARRAY_WRAPPER) END, '$') "${prop}"\n` :
         `, "${prop}".id "${prop}.id", "${prop}".description "${prop}.value", '${type}' "${prop}.type", "${prop}".code "${prop}.code"\n`;
@@ -161,7 +161,7 @@ export class SQLGenegator {
         checkComlexType(type) ?
           `, x."${prop}" "${prop}.id", x."${prop}" "${prop}.value", '${type}' "${prop}.type", x."${prop}" "${prop}.code"\n` :
           type.startsWith('Types.') ?
-            `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc, N'$.${prop}')
+            `,  JSON_QUERY(CASE WHEN "${prop}".id IS NULL THEN JSON_QUERY(d.doc,N'$."${prop}"')
               ELSE (SELECT "${prop}".id "id", "${prop}".description "value",
                 ISNULL("${prop}".type, '${type}') "type", "${prop}".code "code" FOR JSON PATH, WITHOUT_ARRAY_WRAPPER) END, '$') "${prop}"\n` :
             `, "${prop}".id "${prop}.id", "${prop}".description "${prop}.value", '${type}' "${prop}.type", "${prop}".code "${prop}.code"\n`;
@@ -340,7 +340,7 @@ export class SQLGenegator {
         , ISNULL("user".description, '') "user.value", d."user" "user.id", "user".type "user.type"`;
 
     let LeftJoin = '';
-    const excludedProps = Type.isOperation(type) ? ['f1','f2','f3'] : [];
+    const excludedProps = Type.isOperation(type) ? ['f1', 'f2', 'f3'] : [];
     const props = Object.keys(excludeProps(doc)).filter(prop => !excludedProps.includes(prop));
     for (const prop of props) {
       const type = doc[prop].type || 'string';
@@ -366,25 +366,25 @@ export class SQLGenegator {
 
     const simleProperty = (prop: string, type: string) => {
       if (type === 'boolean') return `
-      , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(doc, N'$.${prop}')), 0) [${prop}]`;
+      , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(doc,N'$."${prop}"')), 0) [${prop}]`;
       if (type === 'number') return `
-      , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(doc, N'$.${prop}')), 0) [${prop}]`;
+      , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(doc,N'$."${prop}"')), 0) [${prop}]`;
       if (type === 'date') return `
-      , TRY_CONVERT(DATE, JSON_VALUE(doc, N'$.${prop}'),127) [${prop}]`;
+      , TRY_CONVERT(DATE, JSON_VALUE(doc,N'$."${prop}"'),127) [${prop}]`;
       if (type === 'datetime') return `
-      , TRY_CONVERT(DATETIME, JSON_VALUE(doc, N'$.${prop}'),127) [${prop}]`;
+      , TRY_CONVERT(DATETIME, JSON_VALUE(doc,N'$."${prop}"'),127) [${prop}]`;
       if (type === 'enum') return `
-      , ISNULL(TRY_CONVERT(NVARCHAR(36), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
+      , ISNULL(TRY_CONVERT(NVARCHAR(36), JSON_VALUE(doc,N'$."${prop}"')), '') [${prop}]`;
       if (type === 'string') return `
-      , ISNULL(TRY_CONVERT(NVARCHAR(150), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
+      , ISNULL(TRY_CONVERT(NVARCHAR(150), JSON_VALUE(doc, N'$."${prop}"')), '') [${prop}]`;
       if (type.includes('.')) return `
-      , TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(doc, N'$.${prop}')) [${prop}]`;
+      , TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(doc, N'$."${prop}"')) [${prop}]`;
       return `
-      , ISNULL(TRY_CONVERT(NVARCHAR(250), JSON_VALUE(doc, N'$.${prop}')), '') [${prop}]`;
+      , ISNULL(TRY_CONVERT(NVARCHAR(250), JSON_VALUE(doc,N'$."${prop}"')), '') [${prop}]`;
     };
 
     let query = ``;
-    const excludedProps = Type.isOperation(type) ? ['f1','f2','f3'] : [];
+    const excludedProps = Type.isOperation(type) ? ['f1', 'f2', 'f3'] : [];
     const props = Object.keys(excludeProps(doc)).filter(prop => !excludedProps.includes(prop));
     for (const prop of props) {
       const type = doc[prop].type || 'string';
@@ -406,22 +406,22 @@ export class SQLGenegator {
 
     const simleProperty = (prop: string, type: string) => {
       if (type === 'boolean') return `
-        , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(r.data, N'$.${prop}')), 0) [${prop}]`;
+        , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(r.data,N'$."${prop}"')), 0) [${prop}]`;
       if (type === 'number') return `
-        , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(r.data, N'$.${prop}')), 0) [${prop}]`;
+        , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(r.data,N'$."${prop}"')), 0) [${prop}]`;
       if (type === 'date') return `
-        , TRY_CONVERT(DATE, JSON_VALUE(r.data, N'$.${prop}'),127) [${prop}]`;
+        , TRY_CONVERT(DATE, JSON_VALUE(r.data,N'$."${prop}"'),127) [${prop}]`;
       if (type === 'datetime') return `
-        , TRY_CONVERT(DATETIME, JSON_VALUE(r.data, N'$.${prop}'),127) [${prop}]`;
+        , TRY_CONVERT(DATETIME, JSON_VALUE(r.data,N'$."${prop}"'),127) [${prop}]`;
       return `
-        , JSON_VALUE(r.data, N'$.${prop}') "${prop}"`;
+        , JSON_VALUE(r.data,N'$."${prop}"') "${prop}"`;
     };
 
     const complexProperty = (prop: string, type: string) => `
         , [${prop}].id [${prop}.id], [${prop}].description [${prop}.value], '${type}' [${prop}.type], [${prop}].code [${prop}.code]`;
 
     const addLeftJoin = (prop: string, type: string) => `
-      LEFT JOIN dbo.[Documents] [${prop}] ON [${prop}].id = TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(r.data, N'$.${prop}'))`;
+      LEFT JOIN dbo.[Documents] [${prop}] ON [${prop}].id = TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(r.data,N'$."${prop}"'))`;
 
     let LeftJoin = ''; let select = '';
     for (const prop in excludeRegisterAccumulatioProps(doc)) {
@@ -488,22 +488,22 @@ export class SQLGenegator {
 
     const simleProperty = (prop: string, type: string) => {
       if (type === 'boolean') return `
-        , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(r.data, N'$.${prop}')), 0) [${prop}]`;
+        , ISNULL(TRY_CONVERT(BIT, JSON_VALUE(r.data,N'$."${prop}"')), 0) [${prop}]`;
       if (type === 'number') return `
-        , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(r.data, N'$.${prop}')), 0) [${prop}]`;
+        , ISNULL(TRY_CONVERT(MONEY, JSON_VALUE(r.data,N'$."${prop}"')), 0) [${prop}]`;
       if (type === 'date') return `
-        , TRY_CONVERT(DATE, JSON_VALUE(r.data, N'$.${prop}'),127) [${prop}]`;
+        , TRY_CONVERT(DATE, JSON_VALUE(r.data,N'$."${prop}"'),127) [${prop}]`;
       if (type === 'datetime') return `
-        , TRY_CONVERT(DATETIME, JSON_VALUE(r.data, N'$.${prop}'),127) [${prop}]`;
+        , TRY_CONVERT(DATETIME, JSON_VALUE(r.data,N'$."${prop}"'),127) [${prop}]`;
       return `
-        , JSON_VALUE(r.data, N'$.${prop}') [${prop}]`;
+        , JSON_VALUE(r.data,N'$."${prop}"') [${prop}]`;
     };
 
     const complexProperty = (prop: string, type: string) => `
         , [${prop}].id [${prop}.id], [${prop}].description [${prop}.value], '${type}' [${prop}.type], [${prop}].code [${prop}.code]`;
 
     const addLeftJoin = (prop: string, type: string) => `
-      LEFT JOIN dbo.[Documents] [${prop}] ON [${prop}].id = TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(r.data, N'$.${prop}'))`;
+      LEFT JOIN dbo.[Documents] [${prop}] ON [${prop}].id = TRY_CONVERT(UNIQUEIDENTIFIER, JSON_VALUE(r.data,N'$."${prop}"'))`;
 
     let LeftJoin = ''; let select = '';
     for (const prop in excludeRegisterInfoProps(doc)) {

@@ -6,6 +6,7 @@ export class FormListFilter {
         public right: any = null,
         public isActive?: boolean,
         public isFixed?: boolean,
+        public isOR?: boolean,
         public interval?: { start: any, end: any }) { }
 }
 

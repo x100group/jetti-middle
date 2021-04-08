@@ -8,6 +8,6 @@ exports.matchOperatorByType = {
     datetime: ['beetwen', '<=', '<', '>', '>=', '='],
     enum: ['in', 'not in'],
     boolean: ['='],
-    default: ['=', 'in', 'not in', 'in group', 'not in group', 'is null', 'is not null']
+    default: ['=', 'in', 'not in', 'is null', 'is not null']
 };
 //# sourceMappingURL=common.js.map

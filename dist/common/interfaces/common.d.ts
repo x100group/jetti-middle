@@ -36,5 +36,5 @@ export interface IUserPermission {
     operator: matchOperator;
     value: string;
     read: boolean;
-    write: boolean;
+    write?: boolean;
 }

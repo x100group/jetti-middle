@@ -34,48 +34,48 @@ steps:
 #     customCommand: 'test'
 #   displayName: 'npm test'
 
-- script: |
-    # get package name from package.json file
-    packageName=$(jq -r ".name" package.json)
-    # get package version from package.json file
-    package_version=$(jq -r ".version" package.json)
-    # get package latest version.
-    get_package_id_URL='https://repository.jfd-prod.x100platforma.com/artifactory/api/search/latestVersion?g=@x100group.jetti-middle&a=jetti-middle&repos=npm-local'
-    latest_version=$(curl -X GET  -u $SYSTEM_ACCESSTOKEN  $get_package_id_URL)
-    echo $packageName
-    echo $package_version
-    echo $latest_version
-    echo $SOURCE_BRANCH | awk -F/ '{print $NF}'
-    if [[ "echo $latest_version | grep -oP '^\d+\.\d+'" =~ "echo $package_version | grep -oP '^\d+\.\d+'" ]]; then
-        IFS=. read i1 i2 i3 <<< "$latest_version"
-        i3_updated=$((i3 + 1))
-        new_version=$i1.$i2.$i3_updated
-        npm version $new_version --no-git-tag-version --allow-same-version
-        git config --global user.email "github-service@x100group.com"
-        git config --global user.name "github-service"
-        git add package.json
-        git commit -m '***NO_CI*** update version'
-        git tag v.$new_version
-        git status
-        git push origin HEAD:$SOURCE_BRANCH
-        git push --tags
-        else
-        npm version $package_version --no-git-tag-version --allow-same-version
-        git config --global user.email "github-service@x100group.com"
-        git config --global user.name "github-service"
-        git add package.json
-        git commit -m '***NO_CI*** update version'
-        git tag v.$package_version
-        git status
-        git push origin HEAD:$SOURCE_BRANCH
-        git push --tags
-        fi
-  env:
-    SOURCE_BRANCH: $(Build.SourceBranch)
-    SYSTEM_ACCESSTOKEN: $(artifactoryci)
-  displayName: 'npm generate a new version'
-  workingDirectory: $(Build.SourcesDirectory)
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'],'refs/heads/master'))
+# - script: |
+#     # get package name from package.json file
+#     packageName=$(jq -r ".name" package.json)
+#     # get package version from package.json file
+#     package_version=$(jq -r ".version" package.json)
+#     # get package latest version.
+#     get_package_id_URL='https://repository.jfd-prod.x100platforma.com/artifactory/api/search/latestVersion?g=@x100group.jetti-middle&a=jetti-middle&repos=npm-local'
+#     latest_version=$(curl -X GET  -u $SYSTEM_ACCESSTOKEN  $get_package_id_URL)
+#     echo $packageName
+#     echo $package_version
+#     echo $latest_version
+#     echo $SOURCE_BRANCH | awk -F/ '{print $NF}'
+#     if [[ "echo $latest_version | grep -oP '^\d+\.\d+'" =~ "echo $package_version | grep -oP '^\d+\.\d+'" ]]; then
+#         IFS=. read i1 i2 i3 <<< "$latest_version"
+#         i3_updated=$((i3 + 1))
+#         new_version=$i1.$i2.$i3_updated
+#         npm version $new_version --no-git-tag-version --allow-same-version
+#         git config --global user.email "github-service@x100group.com"
+#         git config --global user.name "github-service"
+#         git add package.json
+#         git commit -m '***NO_CI*** update version'
+#         git tag v.$new_version
+#         git status
+#         git push origin HEAD:$SOURCE_BRANCH
+#         git push --tags
+#         else
+#         npm version $package_version --no-git-tag-version --allow-same-version
+#         git config --global user.email "github-service@x100group.com"
+#         git config --global user.name "github-service"
+#         git add package.json
+#         git commit -m '***NO_CI*** update version'
+#         git tag v.$package_version
+#         git status
+#         git push origin HEAD:$SOURCE_BRANCH
+#         git push --tags
+#         fi
+#   env:
+#     SOURCE_BRANCH: $(Build.SourceBranch)
+#     SYSTEM_ACCESSTOKEN: $(artifactoryci)
+#   displayName: 'npm generate a new version'
+#   workingDirectory: $(Build.SourcesDirectory)
+#   condition: and(succeeded(), eq(variables['Build.SourceBranch'],'refs/heads/master'))
 
 - task: ArtifactoryNpm@2
   inputs:

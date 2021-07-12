@@ -25,8 +25,7 @@ steps:
 
 - task: Npm@1
   inputs:
-    command: 'custom'
-    customCommand: 'run build'
+    command: 'publish'
   displayName: 'npm build'
 
 # - task: Npm@1

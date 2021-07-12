@@ -8,7 +8,7 @@
   "scripts": {
     "tsc": "tsc",
     "publish": "npm publish",
-    "build": "npm build"
+    "build": "tsc"
   },
   "author": "Tishchenko Alex",
   "license": "MIT",

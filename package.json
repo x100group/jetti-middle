@@ -1,5 +1,5 @@
 {
-  "name": "@TishchenkoAlex/jetti-middle",
+  "name": "@x100group/jetti-middle",
   "tsc": "tsc",
   "version": "1.0.4",
   "description": "Jetti Finance server and client common files",
